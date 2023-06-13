@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% block title %}Supprimer un client{% endblock title %}
+{% block breadcrumb %}Suppression d'un client{% endblock breadcrumb %}
+
+{% block content %}
+    <h1>Suppression d'un client</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Vous etes sur de supprimer le client {{ completeuser.name}} ?</p>
+        <button class="btn btn-danger ml-2" type="submit">Confirmez</button>
+        <button class="btn btn-success ml-2"> <a href="{% url 'join-event-list' %}"> Annuler</a> </button>
+
+    </form>
+{% endblock content %}

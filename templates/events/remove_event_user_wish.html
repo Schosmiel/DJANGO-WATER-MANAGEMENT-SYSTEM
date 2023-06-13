@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+{% block title %}Suppression d'un Fournisseur{% endblock title %}
+{% block breadcrumb %}Suppression d'un Fournisseur{% endblock breadcrumb %}
+
+{% block content %}
+    <h1>Suppression d'un Fournisseur</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Etes vous sur de vouloir supprimer  Cet Fournisseur?</p>
+        <button class="btn btn-danger ml-2" type="submit">Confirmez</button>
+        <button class="btn btn-success ml-2"> <a href="{% url 'event-wish-list' %}"> Annuler</a> </button>
+    </form>
+{% endblock content %}

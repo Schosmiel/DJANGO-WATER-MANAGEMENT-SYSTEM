@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% block title %}Supprimer un livreur{% endblock title %}
+{% block breadcrumb %}Supprimer un livreur{% endblock breadcrumb %}
+
+{% block content %}
+    <h1>Suppreession d'un livreur</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Vous etes sur de supprimer ce livreur?</p>
+        <button class="btn btn-danger ml-2" type="submit">Confirmez</button>
+        <button class="btn btn-success ml-2"> <a href="{% url 'listeLivreur' %}"> Annuler</a> </button>
+
+    </form>
+{% endblock content %}
