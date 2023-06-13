@@ -17,7 +17,7 @@ $ git clone https://github.com/Schosmiel/DJANGO-WATER-MANAGEMENT-SYSTEM.git
 7. Finally Run The Project `python manage.py runserver`
 
 
-# Virtualenv modules installation (Windows based systems)
+## Virtualenv modules installation (Windows based systems)
 $ # virtualenv env
 $ # .\env\Scripts\activate
 $
