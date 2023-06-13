@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+{% block title %}Supprimer la catégorie de produit{% endblock title %}
+{% block breadcrumb %}Supprimer la catégorie de produit{% endblock breadcrumb %}
+
+{% block content %}
+    <h4>Supprimer la catégorie de produit</h4>
+    <form action="" method="post">{% csrf_token %}
+        <p>Voulez-vous vraiment supprimer cette catégorie ?</p-->
+        <button class="btn btn-danger ml-2"type="submit">Confirmez</button>
+
+        <button class="btn btn-success ml-2"> <a href="{% url 'event-category-list' %}"> Annuler</a> </button>
+    </form>
+{% endblock content %}

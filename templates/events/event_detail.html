@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+{% block title %}Détail de produit{% endblock title %}
+{% block breadcrumb %}Détail de produit{% endblock breadcrumb %}
+
+{% block extrahead %}
+    {% load static %}
+    <style>
+        @font-face { font-family: JuneBug; src: url({% static 'fonts/Minion-Regular.ttf' %}); }
+        span {
+            font-size: 20px;
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Détail de produit</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'event-list' %}">Liste des produits</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <img src="{{ event.image.url }}" alt="Image" height="50px" width="10%">
+                    <div class="row">
+                        <div class="com-md-6">
+                            <table class="table">
+                                <tr>
+                                    <td><span>Categorie: {{ event.category }}</span></td>
+                                    <td><span>Nom: {{ event.name }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Prix: {{ event.price }}</span></td>
+                                    <td><span>Stock: {{ event.stock }}</span></td>
+                                    <td><span>Volume: {{ event.volume }}</span></td>
+                                    <td><span>Status: {{ event.status }}</span></td>
+                                </tr>
+                            </table>
+                            <p>Description : {{ event.description|safe }}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer text-center m-2">
+                    <a href="{% url 'event-list' %}" class="btn btn-success">Retour à la liste des produits</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
