@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block title %}Créer une catégorie de produit{% endblock title %}
+{% block breadcrumb %}Créer une catégorie de produit{% endblock breadcrumb %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Create une Category de produit</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'event-category-list' %}">Liste des Categorie</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form|crispy  }}
+                        <button class="btn btn-success ml-2" type="submit">Créer une catégorie</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% block title %}Détail de Client{% endblock title %}
+{% block breadcrumb %}Détail de Client{% endblock breadcrumb %}
+
+{% block extrahead %}
+    {% load static %}
+    <style>
+        @font-face { font-family: JuneBug; src: url({% static 'fonts/Minion-Regular.ttf' %}); }
+        span {
+            font-size: 20px;
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Détail de Client</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'join-event-list' %}">Liste des Client</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="com-md-6">
+                            <table class="table">
+                                <tr>
+                                    <td><span> Nom: {{ client.name }}</span></td>
+                                    <td><span> Email: {{ client.email }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Téléphone: {{ client.telephone }}</span></td>
+                                    <td><span>Adresse: {{ client.addresse }}</span></td>
+                                    <td><span>Sexe: {{ client.sexe }}</span></td>
+                                    <td><span>Ville: {{ client.city }}</span></td>
+                                    <td><span>Status: {{ client.status }}</span></td>
+                                </tr>
+                            </table>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer text-center m-2">
+                    <a href="{% url 'join-event-list' %}" class="btn btn-success">Retour à la liste des Clients</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
