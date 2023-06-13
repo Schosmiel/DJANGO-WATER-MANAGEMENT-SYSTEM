@@ -1,0 +1,173 @@
+{% extends 'base/base.html' %}
+{% block title %}Administrtion{% endblock title %}
+{% block breadcrumb %}Administration{% endblock breadcrumb %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-info">
+        <div class="inner">
+          {% if event_ctg %}
+            <h3>{{ event_ctg }}</h3>
+          {% else %}
+            <h3>0</h3>
+          {% endif %}
+
+          <p>Catégorie de produits</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-bag"></i>
+        </div>
+        <a href="{% url 'event-category-list' %}" class="small-box-footer">Voir plus <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-success">
+        <div class="inner">
+          {% if event %}
+            <h3>{{ event }}</h3>
+          {% else %}
+            <h3>0</h3>
+          {% endif %}
+
+          <p>Total de Produits en stock</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-stats-bars"></i>
+        </div>
+        <a href="{% url 'event-list' %}" class="small-box-footer">Voir Plus<i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-warning">
+        <div class="inner">
+          {% if user %}
+            <h3>{{ user }}</h3>
+          {% else %}
+            <h3>0</h3>
+          {% endif %}
+
+          <p>Nombre d'utlisateur connecté</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-person-add"></i>
+        </div>
+        <a href="#" class="small-box-footer">Voir Plus<i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-6">
+      <div class="small-box bg-danger">
+        <div class="inner">
+          {% if eventmember %}
+            <h3>{{ eventmember }}</h3>
+          {% else %}
+          <h3>0</h3>
+          {% endif %}
+
+          <p>Nombre de clients </p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a href="{% url 'join-event-list' %}" class="small-box-footer">Voir Plus<i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div >
+  
+  <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h5>Liste de produits</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                  <table class="table table-striped table-bordered datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="border-collapse: collapse !important">
+                    <thead>
+                        <tr role="row">
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Categorie</th>
+                            <th>Nom</th>
+                            <th>Prix</th>
+                            <th>Stock</th>
+                            <th>Volume</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                          <tr>
+                              <td>{{ forloop.counter }}</td>
+                              <td class="ctg_image"><img class="ctg_image" src="{{ event.image.url }}" alt="Image" height="50px"></td>
+                              <td>{{ event.category|capfirst }}</td>
+                              <td>{{ event.name }}</td>
+                              <td>{{ event.price }} FCFA</td>
+                              <td>{{ event.stock }}</td>
+                              <td>{{ event.volume }}litre</td>
+                      
+                              <td>
+                                  {% if event.status == 'disponible' %}
+                                    <a href="{% url 'update-event-status' event.id %}" class="text-success">{{ event.status|title }}</a>
+                                  {% elif event.status == 'rupture' %}
+                                    <a href="{% url 'update-event-status' event.id %}" class="text-primary">{{ event.status|title }}</a>
+                                  {% else %}
+                                    <a href="{% url 'update-event-status' event.id %}" class="text-danger">{{ event.status|title }}</a>
+                                  {% endif %}
+                              </td>
+                              <td>
+                                  <a class="btn btn-info" href="{% url 'event-detail' event.pk %}" title="view">
+                                      <i class="fa fa-eye"></i>
+                                  </a>
+                                  <a class="btn btn-info" href="{% url 'event-edit' event.pk %}" title="edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                  <a class="btn btn-danger" href="{% url 'event-delete' event.pk %}" title="delete">
+                                      <i class="fa fa-trash"></i>
+                                  </a>
+                              </td>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="events/Chat/node_modules/chart.js">
+
+
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+
+
+{% endblock content %}
+
