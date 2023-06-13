@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% block title %}Ajout d'un Fournisseur{% endblock title %}
+{% block breadcrumb %}Ajout d'un Fournisseur{% endblock breadcrumb %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Ajout d'un Fournisseur</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'liste_fournisseur' %}">Liste des Fournisseurs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy  }} 
+                        <button class="btn btn-success ml-2" type="submit">Ajouter un fournisseur</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
