@@ -1,0 +1,102 @@
+{% load static %}
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="#" class="brand-link">
+      <img src="{% static 'img/eau.png' %}" alt="Logo" class="brand-image elevation-3"
+           style="opacity: .8">
+          <span class="brand-text font-weight-light">ESSIVI-SARL</span>
+    </a>
+
+    <div class="sidebar">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'img/user.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+
+        <div class="info">
+          <a href="#" class="d-block"> Bonjour {{ user.username }} </a>
+        </div>
+      </div>
+
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="{% url 'dashboard' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Tableau de board
+              </p>
+            </a>
+          </li>
+
+                <nav class="mt-2">
+                  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                      <a href="{% url 'event-category-list' %}" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                          Catégorie de produit
+                        </p>
+                      </a>
+                    </li>
+
+
+                    <nav class="mt-2">
+                      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                          <a href="{% url 'event-list' %}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                              Stock de Produit
+                            </p>
+                          </a>
+                        </li>
+
+
+
+                        <nav class="mt-2">
+                          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-item">
+                              <a href="{% url 'listeLivreur' %}" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                  Gestion des Livreurs
+                                </p>
+                              </a>
+                            </li>
+                            <nav class="mt-2">
+                              <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <li class="nav-item">
+                                  <a href="{% url 'livraison_list' %}" class="nav-link">
+                                    <i class="nav-icon fas fa-th"></i>
+                                    <p>
+                                      Gestion des Commandes
+                                    </p>
+                                  </a>
+                                </li>
+                                <nav class="mt-2">
+                                  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                    <li class="nav-item">
+                                      <a href="{% url 'join-event-list' %}" class="nav-link">
+                                        <i class="nav-icon fas fa-th"></i>
+                                        <p>
+                                          Gestion des clients
+                                        </p>
+                                      </a>
+                                    </li>
+                                    <nav class="mt-2">
+                                      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                        <li class="nav-item">
+                                          <a href="{% url 'liste_fournisseur' %}" class="nav-link">
+                                            <i class="nav-icon fas fa-th"></i>
+                                            <p>
+                                              Gestion des Fournisseurs
+                                            </p>
+                                          </a>
+                                        </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
