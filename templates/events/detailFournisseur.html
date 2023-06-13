@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% block title %}Détail du Fournisseur{% endblock title %}
+{% block breadcrumb %}Détail du Fournisseur{% endblock breadcrumb %}
+
+{% block extrahead %}
+    {% load static %}
+    <style>
+        @font-face { font-family: JuneBug; src: url({% static 'fonts/Minion-Regular.ttf' %}); }
+        span {
+            font-size: 20px;
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Détail du Fournisseur</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'liste_fournisseur' %}">Liste du Fournisseur</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="com-md-6">
+                            <table class="table">
+                                <tr>
+                                    <td><span> Nom: {{ fournisseur.nom }}</span></td>
+                                    <td><span> Téléphone: {{ fournisseur.telephone }}</span></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td><span>Ville: {{ fournisseur.ville}}</span></td>
+                                    <td><span>Pays: {{ fournisseur.pays }}</span></td>
+                                    <td><span>Status: {{ fournisseur.status }}</span></td>
+                                </tr>
+                            </table>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer text-center m-2">
+                    <a href="{% url 'liste_fournisseur' %}" class="btn btn-success">Retour aux Fournisseurs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'base/base.html' %}
+{% block title %}Détail de Livreur{% endblock title %}
+{% block breadcrumb %}Détail de Livreur{% endblock breadcrumb %}
+
+{% block extrahead %}
+    {% load static %}
+    <style>
+        @font-face { font-family: JuneBug; src: url({% static 'fonts/Minion-Regular.ttf' %}); }
+        span {
+            font-size: 20px;
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Détail de Livreur</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'listeLivreur' %}">Liste des Livreurs</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="com-md-6">
+                            <table class="table">
+                                <tr>
+                                    <td><span> Nom: {{ livreurs.name }}</span></td>
+                                    <td><span> Email: {{ livreurs.email }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span>Téléphone: {{ livreurs.telephone }}</span></td>
+                                    <td><span>Adresse: {{ livreurs.address }}</span></td>
+                                    <td><span>Sexe: {{ livreurs.sexe }}</span></td>
+                                    <td><span>Status: {{ livreurs.status }}</span></td>
+                                </tr>
+                            </table>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer text-center m-2">
+                    <a href="{% url 'listeLivreur' %}" class="btn btn-success">Retour à la liste des Livreurs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
