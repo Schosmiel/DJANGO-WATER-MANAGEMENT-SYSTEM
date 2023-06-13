@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+{% block title %}Détail de la Cammande{% endblock title %}
+{% block breadcrumb %}Détail de la Commande{% endblock breadcrumb %}
+
+{% block extrahead %}
+    {% load static %}
+    <style>
+        @font-face { font-family: JuneBug; src: url({% static 'fonts/Minion-Regular.ttf' %}); }
+        span {
+            font-size: 20px;
+        }
+    </style>
+{% endblock extrahead %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <h5>Détail de la Commande</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-success" href="{% url 'livraison_list' %}">Liste des Commande</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="com-md-6">
+                            <table class="table">
+                                <tr>
+                                    <td><span>Produit: {{ livraisons.produit }}</span></td>
+                                    <td><span> Prix: {{ livraisons.price }} FCFA</span></td>
+                                    <td><span> Quantité: {{ livraisons.quantite }}</span></td>
+                                    <td><span> Total: {{ livraisons.get_total }}</span></td>
+                                    <td><span>Volume: {{ livraisons.volume }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span> Ville: {{ livraisons.ville }}</span></td>
+                                    <td><span>Date de livraison: {{ livraisons.start_date }}</span></td>
+                                    <!--td><span>Volume: {{ livraisons.volume }}</span></td-->
+                                </tr>
+                            </table>
+                            <p>{{ event.description|safe }}</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="footer text-center m-2">
+                    <a href="{% url 'livraison_list' %}" class="btn btn-success">Retour à la liste des Commandes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

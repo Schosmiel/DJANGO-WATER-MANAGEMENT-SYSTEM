@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% block title %}Ajout d'un livreur {% endblock title %}
+{% block breadcrumb %}Ajout d'un livreur{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h5>La liste des livreurs</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn btn-success" href="{% url 'ajoutLivreur' %}">Ajouter un livreur</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>                  
+                          <tr>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>Téléphone</th>
+                            <th>Adresse</th>
+                            <th>Sexe</th>
+                            <th>Date de création</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for member in livreurs %}
+                                <tr role="row">
+                                    <!--td>{{ forloop.counter }}</td-->
+                                    <!--td>
+                                        <a href="{% url 'event-detail' member.id %}">{{ member.event }}</a>
+                                    </td-->
+                                    
+                                    <td>{{ member.name }}</td>
+                                    <td>{{ member.email }}</td>
+                                    <td>{{ member.telephone }}</td>
+                                    <td>{{ member.addresse }}</td>
+                                    <td>{{ member.sexe }}</td>
+                                    <td>{{ member.created_date }}</td>
+                                    <td>
+                                   {% if event.status == 'active' %}
+                                    <a href="{% url 'editerStatus' member.id %}" class="text-success">{{ member.status|title }}</a>
+                                   {% elif event.status == 'completed' %}
+                                    <a href="{% url 'editerStatus' member.id %}" class="text-primary">{{ member.status|title }}</a>
+                                   {% else %}
+                                    <a href="{% url 'editerStatus' member.id %}" class="text-danger">{{ member.status|title }}</a>
+                                   {% endif %}
+                                    </td>
+                                    <td>
+                                        <!--a class="btn btn-danger" href="{% url 'remove-event-member' member.id %}">
+                                            remove
+                                        </a-->
+                                        <a class="btn btn-danger" href="{% url 'removeLivreur' member.id %}" title="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a> 
+                                        <a class="btn btn-info" href="{% url 'detailLivreur' member.id %}" title="view">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
+                                        <a class="btn btn-info" href="{% url 'editerLivreur' member.id %}" title="edit">
+                                          <i class="fa fa-edit"></i>
+                                      </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% block title %}Liste des fournisseurs {% endblock title %}
+{% block breadcrumb %}Liste des fournisseurs{% endblock breadcrumb %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h5>La liste des fournisseurs</h5>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="btn btn-success" href="{% url 'add-event-wish-user' %}">Ajouter Un fournisseur</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>                  
+                          <tr>
+                            <th>Nom</th>
+                            <th>Téléphone</th>
+                            <th>Ville</th>
+                            <th>Pays</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for four in eventwish %}
+                                <tr role="row">
+                                    <td>{{ four.nom }}</td>
+                                    <td>{{ four.telephone }}</td>
+                                    <td>{{ four.ville }}</td>
+                                    <td>{{ four.pays }}</td>
+                                    <td>
+                                   {% if four.status == 'actif' %}
+                                    <a href="{% url 'editerStatusfourn' four.id %}" class="text-success">{{ four.status|title }}</a>
+                                   {% elif e.status == 'abandonné' %}
+                                    <a href="{% url 'editerStatusfourn' four.id %}" class="text-primary">{{ four.status|title }}</a>
+                                   {% else %}
+                                    <a href="{% url 'editerStatusfourn' four.id %}" class="text-danger">{{ four.status|title }}</a>
+                                   {% endif %}
+                                    </td>
+                                    <td>
+                                        
+                                        <a class="btn btn-danger" href="{% url 'remove-event-user-wish' four.id %}" title="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a> 
+                                        <a class="btn btn-info" href="{% url 'detailFournisseur' four.id %}" title="view">
+                                            <i class="fa fa-eye"></i>
+                                        </a> 
+                                        <a class="btn btn-info" href="{% url 'editeFournisseur' four.id %}" title="edit">
+                                          <i class="fa fa-edit"></i>
+                                      </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
