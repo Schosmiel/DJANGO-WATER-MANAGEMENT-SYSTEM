@@ -2,8 +2,6 @@
 
 
 
-# Django Water Management System.
-
 $ git clone https://github.com/
 
 
